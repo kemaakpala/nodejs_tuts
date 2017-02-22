@@ -1,0 +1,18 @@
+{
+  "name": "nodejs_tuts_test",
+  "version": "0.0.1",
+  "description": "this is an example file on how to create a package.json file.",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "testcmd"
+  },
+  "keywords": [
+    "nodejs_test"
+  ],
+  "author": "patrick akpala",
+  "license": "ISC"
+}
