@@ -204,6 +204,13 @@ var fs = require("fs");
 
 // // Asynchronous - Opening File
 // console.log("Going to open file!");
+// /*
+// fs.open(  path, // this is the string having file name inluding path
+//           flags,  // indicates the behavior of file to be opened.
+//           [mode], //sets file permission and sticky bits only if the file is created.
+//           callback // this gets 2 arguments (err,fd)
+// );
+// */
 // fs.open('input.txt', 'r+', function(err, fd){
 //   if (err) {
 //     return console.error(err);
@@ -284,41 +291,99 @@ var buf = new Buffer(1024);
 //   });
 // });
 
-console.log("Going to open an existing file");
-fs.open('input.txt', 'r+', function(err, fd){
-  if(err){
-    return console.error(err);
-  }
-  console.log("File opened successfully!");
-  console.log("Going to truncate the file after 10 bytes");
+//Truncate file
+// console.log("Going to open an existing file");
+// fs.open('input.txt', 'r+', function(err, fd){
+//   if(err){
+//     return console.error(err);
+//   }
+//   console.log("File opened successfully!");
+//   console.log("Going to truncate the file after 10 bytes");
+//
+//   // Truncate the opened file.
+//   fs.ftruncate(fd, 10, function(err){
+//     if(err){
+//       console.log(err);
+//     }
+//     console.log("File truncated successfully.");
+//     console.log("Going to read the same file");
+//
+//     fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
+//       if(err){
+//         console.log(err);
+//       }
+//
+//       // Print only read bytes to avoid junk.
+//       if(bytes > 0){
+//         console.log(buf.slice(0, bytes).toString())
+//       }
+//
+//       // Close the opened file.
+//       fs.close(fd, function(err){
+//         if(err){
+//           console.log(err);
+//         }
+//         console.log("File closed successfully.");
+//       });
+//     });
+//   });
+// });
 
-  // Truncate the opened file.
-  fs.ftruncate(fd, 10, function(err){
-    if(err){
-      console.log(err);
-    }
-    console.log("File truncated successfully.");
-    console.log("Going to read the same file");
+//Delete a File
+// fs.unlink(  path, //filename including path
+//             callback // only exceptions are given on completion callback
+// );
 
-    fs.read(fd, buf, 0, buf.length, 0, function(err, bytes){
-      if(err){
-        console.log(err);
-      }
+// console.log("Going to delete an existing file");
+// fs.unlink('input.txt', function(err){
+//   if(err){
+//     return console.error(err);
+//   }
+//   console.log("File deleted successfully!");
+// });
 
-      // Print only read bytes to avoid junk.
-      if(bytes > 0){
-        console.log(buf.slice(0, bytes).toString())
-      }
-
-      // Close the opened file.
-      fs.close(fd, function(err){
-        if(err){
-          console.log(err);
-        }
-        console.log("File closed successfully.");
-      });
-    });
-  });
+//Create a File
+// console.log("Going to create directory /tmp/test");
+// fs.mkdir('/tmp/test', function(err){
+//   if(err){
+//     return console.error(err);
+//   }
+//   console.log("Directory created successfully!");
+// });
 
 
-});
+//Read a Directory
+// fs.readdir( path, //directory name including path
+//             callback // gets 2 arguments err & files array([name of files]), excluding '.' & '..'.
+// );
+
+// console.log("Going to read directory /tmp");
+// fs.readdir("/tmp/", function(err, files){
+//   if(err){
+//     return console.error(err);
+//   }
+//   files.forEach(function (file){
+//     console.log( file );
+//   });
+// });
+
+// Delete a Directory
+// fs.rmdir( path, //directory name including path
+//           callback // only exceptions are given to the completion callback.
+// );
+
+// console.log("Going to delete directory /tmp/test");
+// fs.rmdir("/tmp/test", function(err){
+//   if(err){
+//     return console.error(err);
+//   }
+//   console.log("Going to read directory /tmp");
+//   fs.readdir("/tmp/",function(err, files){
+//     if(err) {
+//       return console.error(err);
+//     }
+//     files.forEach( function (file){
+//       console.log(file);
+//     });
+//   });
+// });
