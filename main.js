@@ -387,3 +387,30 @@ var buf = new Buffer(1024);
 //     });
 //   });
 // });
+
+//Global Objects
+//file name
+//console.log('__filename: '+ __filename);
+//directory Name
+//console.log('__dirname: '+ __dirname);
+/*
+  setTimeout( cb, ms );
+  runs cb (callback) after at least ms (milliseconds)
+*/
+function printHello(){
+  console.log( "Hello, World!" );
+}
+
+// Now call above function after 2 seconds
+//var t = setTimeout(printHello, 2000)
+
+//Now Clear the timer
+//clearTimeout(t);
+
+/*
+  setInterval( cb, ms );
+  runs cb (callback) every ms (milliseconds)
+*/
+// Now call above function every 2 seconds
+var t = setInterval(printHello, 2000);
+clearInterval(t);
